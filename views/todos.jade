@@ -27,5 +27,5 @@ block content
           th 时间
       each todo in todos
         tr
-          td=todo.get('content')
-          td= todo.get('tags') == null ? '' : todo.get('tags').join(',')
+          td=todo.get('device_code')
+          td= todo.get('datetime')
