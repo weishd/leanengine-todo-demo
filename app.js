@@ -31,11 +31,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // 可以将一类的路由单独保存在一个文件中
-app.use('/todos', todos);
+app.use('/devices', todos);
 app.use('/users', users);
 
 app.get('/', function(req, res) {
-  res.redirect('/todos');
+  res.redirect('/devices');
 })
 
 // 如果任何路由都没匹配到，则认为 404
