@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1 TODO
+  h1 悍客智能体温计管理平台
   
   #createTodo
     form(action='/todos', method='POST')
@@ -9,10 +9,10 @@ block content
         input.form-control(type='input', name='content')
         input.btn.btn-default(type='submit', value='新增')
 
-  h2 TODO 列表
+  h2 体温计设备列表
   div
-    a.btn.btn-default(href='/todos', role='button') 未完成
-    a.btn.btn-default(href='/todos?status=1', role='button') 已完成
+    #a.btn.btn-default(href='/todos', role='button') 未完成
+   # a.btn.btn-default(href='/todos?status=1', role='button') 已完成
 
   #errMsg
     if errMsg
@@ -26,10 +26,10 @@ block content
           col.col-xs-1
           col.col-xs-1
         tr
-          th 描述
-          th 标签
-          th 所有者
-          th 操作
+          th 设备序列号
+          th 时间
+          #th 所有者
+          #th 操作
       each todo in todos
         tr
           td
@@ -39,7 +39,7 @@ block content
                   input(type='checkbox', checked=(todo.get('status') == 1), onClick='submit()')
                   | #{todo.get('content')}
           td= todo.get('tags') == null ? '' : todo.get('tags').join(',')
-          td= todo.get('author') == null ? '' : todo.get('author').get('username')
-          td
+          #td= todo.get('author') == null ? '' : todo.get('author').get('username')
+          #td
             form(action='/todos/#{todo.id}?_method=DELETE&status=#{status}', method='POST')
               input.btn.btn-default(type='submit', value='删除')
