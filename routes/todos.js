@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 
   var query = new AV.Query(Todo);
   query.descending('updatedAt');
-  query.limit(50);
+  query.limit(500);
   query.find({sessionToken: req.sessionToken}).then(function(results) {
     res.render('devices', {
       title: '悍客体温计设备管理系统',
