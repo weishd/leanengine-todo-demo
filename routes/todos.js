@@ -4,7 +4,7 @@ var AV = require('leanengine');
 
 // `AV.Object.extend` 方法一定要放在全局变量，否则会造成堆栈溢出。
 // 详见： https://leancloud.cn/docs/js_guide.html#对象
-var Todo = AV.Object.extend('Todo');
+var Todo = AV.Object.extend('table_device_code');
 
 /**
  * 定义路由：获取所有 Todo 列表
@@ -16,9 +16,8 @@ router.get('/', function(req, res, next) {
     status = req.query.status || 0;
     errMsg = req.query.errMsg;
   }
+
   var query = new AV.Query(Todo);
-  query.equalTo('status', parseInt(status));
-  query.include('author');
   query.descending('updatedAt');
   query.limit(50);
   query.find({sessionToken: req.sessionToken}).then(function(results) {
