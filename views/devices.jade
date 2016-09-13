@@ -5,10 +5,11 @@ block content
   
 
   h2 体温计设备列表
-
-  #errMsg
-    if errMsg
-      pre= errMsg
+  form(name="search", method="post")
+        div.input
+            span.label Title
+            input(type="text", name="title")
+  
 
   div
     table.table
